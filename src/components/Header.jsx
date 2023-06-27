@@ -98,7 +98,7 @@ const Header = () => {
             exit={{ opacity: 0, y: 50 }}
             className="absolute z-10 top-12 p-3 right-0 w-275 gap-2 bg-card shadow-lg rounded-lg backdrop-blur-sm flex flex-col"
           >
-            <NavLink to={"/userProfile"}>
+            <NavLink to={"/profile"}>
               <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out">
                 Profile
               </p>
@@ -106,6 +106,13 @@ const Header = () => {
             <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out">
               My favourite
             </p>
+            {user?.user?.role === "admin" && (
+              <NavLink to={"/dashboard/home"}>
+                <p className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out">
+                  Dashboard
+                </p>
+              </NavLink>
+            )}
             <hr />
             <p
               className="text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out"
