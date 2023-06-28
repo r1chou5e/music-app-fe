@@ -1,8 +1,13 @@
 import React from "react";
 import Header from "./Header";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { isActiveStyle, isNotActiveStyle } from "../utils/styles";
+import DashboardHome from "./DashboardHome";
+import DashboardUsers from "./DashboardUsers";
+import DashboardSongs from "./DashboardSongs";
+import DashboardAlbums from "./DashboardAlbums";
+import DashboardArtists from "./DashboardArtists";
 
 const Dashboard = () => {
   return (
@@ -49,6 +54,17 @@ const Dashboard = () => {
         >
           Albums
         </NavLink>
+      </div>
+
+      <div className="my-4 w-full p-4">
+        <Routes>
+          <Route path="/home" element={<DashboardHome />} />
+          <Route path="/users" element={<DashboardUsers />} />
+          <Route path="/songs" element={<DashboardSongs />} />
+          <Route path="/artists" element={<DashboardArtists />} />
+          <Route path="/albums" element={<DashboardAlbums />} />
+          <Route path="/new-song" element={<DashboardHome />} />
+        </Routes>
       </div>
     </div>
   );
