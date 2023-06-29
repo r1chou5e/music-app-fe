@@ -59,3 +59,12 @@ export const changeUserRole = async (userId, role) => {
     return null;
   }
 };
+
+export const removeUser = async (userId) => {
+  try {
+    const res = axios.delete(`${baseUrl}api/users/delete/${userId}`);
+    return res;
+  } catch (error) {
+    return null;
+  }
+};

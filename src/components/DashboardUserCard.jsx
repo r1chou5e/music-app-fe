@@ -3,7 +3,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import moment from "moment";
 import { useStateValue } from "../context/StateProvider";
 import { motion } from "framer-motion";
-import { changeUserRole, getAllUsers } from "../api";
+import { changeUserRole, getAllUsers, removeUser } from "../api";
 import { actionType } from "../context/reducer";
 import { MdDelete } from "react-icons/md";
 
@@ -29,7 +29,16 @@ const DashboardUserCard = ({ data, index }) => {
   };
 
   const deleteUser = (userId) => {
-    console.log(userId);
+    removeUser(userId).then((res) => {
+      if (res) {
+        getAllUsers().then((data) => {
+          dispatch({
+            type: actionType.SET_ALL_USERS,
+            allUsers: data.users,
+          });
+        });
+      }
+    })
   };
 
   return (
