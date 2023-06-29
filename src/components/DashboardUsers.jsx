@@ -85,11 +85,10 @@ const DashboardUsers = () => {
           </p>{" "}
         </div>
 
-        {allUsers && !filteredUsers
-          ? allUsers?.map((user, index) => {
-              <DashboardUserCard data={user} key={user._id} index={index} />
-            })
-          : filteredUsers?.map((user, index) => {})}
+        {allUsers &&
+          allUsers?.map((user, index) => 
+            <DashboardUserCard data={user} index={index} />
+          )}
       </div>
     </div>
   );
