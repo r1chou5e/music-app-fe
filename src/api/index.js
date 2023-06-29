@@ -49,3 +49,13 @@ export const getAllAlbums = async () => {
   }
 };
 
+export const changeUserRole = async (userId, role) => {
+  try {
+    const res = axios.put(`${baseUrl}api/users/set-role/${userId}`, {
+      role: role,
+    });
+    return res;
+  } catch (error) {
+    return null;
+  }
+};
