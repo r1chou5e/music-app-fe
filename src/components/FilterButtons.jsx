@@ -1,14 +1,46 @@
 import React, { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
 
 const FilterButtons = ({ filterData, flag }) => {
   const [filterName, setFilterName] = useState(null);
   const [filterMenu, setFilterMenu] = useState(false);
+  const [{ artistFilter, albumFilter, languageFilter, filterTerm }, dispatch] =
+    useStateValue();
 
   const updateFilterButton = (name) => {
     setFilterMenu(false);
     setFilterName(name);
+
+    if (flag === "Artists") {
+      dispatch({
+        type: actionType.SET_ARTIST_FILTER,
+        artistFilter: name,
+      });
+    }
+
+    if (flag === "Albums") {
+      dispatch({
+        type: actionType.SET_ALBUM_FILTER,
+        albumFilter: name,
+      });
+    }
+
+    if (flag === "Languages") {
+      dispatch({
+        type: actionType.SET_LANGUAGE_FILTER,
+        languageFilter: name,
+      });
+    }
+
+    if (flag === "Categories") {
+      dispatch({
+        type: actionType.SET_FILTER_TERM,
+        filterTerm: name,
+      });
+    }
   };
 
   return (
