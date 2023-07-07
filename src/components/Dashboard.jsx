@@ -9,6 +9,7 @@ import DashboardSongs from "./DashboardSongs";
 import DashboardAlbums from "./DashboardAlbums";
 import DashboardArtists from "./DashboardArtists";
 import DashboardNewSong from "./DashboardNewSong";
+import Alert from "./Alert";
 
 const Dashboard = () => {
   return (
@@ -67,6 +68,8 @@ const Dashboard = () => {
           <Route path="/new-song" element={<DashboardNewSong />} />
         </Routes>
       </div>
+
+      <Alert type={"danger"}  />
     </div>
   );
 };

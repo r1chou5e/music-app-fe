@@ -9,6 +9,7 @@ import {
   getAllAlbums,
   getAllArtists,
   getAllSongs,
+  saveNewAlbum,
   saveNewArtist,
   saveNewSong,
   saveSong,
@@ -81,6 +82,8 @@ const DashboardNewSong = () => {
   const deleteFileObject = (url, isImage) => {
     if (isImage) {
       setIsImageLoading(true);
+      setIsAlbumUploading(true);
+      setIsArtistUploading(true);
     } else {
       setIsAudioLoading(true);
     }
@@ -88,8 +91,12 @@ const DashboardNewSong = () => {
     deleteObject(deleteRef).then(() => {
       setSongImageCover(null);
       setIsImageLoading(false);
+      setAlbumImageCover(null);
+      setArtistImageCover(null);
       setAudioImageCover(null);
       setIsAudioLoading(false);
+      setIsAlbumUploading(false);
+      setIsArtistUploading(false);
     });
   };
 
@@ -152,6 +159,30 @@ const DashboardNewSong = () => {
       setArtistName("");
       setInstagram("");
       setTwitter("");
+    }
+  };
+
+  const saveAlbum = () => {
+    if (!albumImageCover || !albumName) {
+    } else {
+      setIsAlbumUploading(true);
+      const data = {
+        name: albumName,
+        imageUrl: albumImageCover,
+      };
+
+      saveNewAlbum(data).then(() => {
+        getAllAlbums().then((data) => {
+          dispatch({
+            type: actionType.SET_ALL_ALBUMS,
+            allAlbums: data.albums,
+          });
+        });
+      });
+
+      setIsAlbumUploading(false);
+      setAlbumImageCover(null);
+      setAlbumName("");
     }
   };
 
@@ -386,6 +417,8 @@ const DashboardNewSong = () => {
           </motion.button>
         )}
       </div>
+
+      
     </div>
   );
 };

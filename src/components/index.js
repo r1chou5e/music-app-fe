@@ -13,3 +13,4 @@ export { default as DashboardSongCard } from "./DashboardSongCard";
 export { default as DashboardNewSong } from "./DashboardNewSong";
 export { default as FilterButtons } from "./FilterButtons";
 export { default as FileLoader } from "./FileLoader";
+export { default as Alert } from "./Alert";
