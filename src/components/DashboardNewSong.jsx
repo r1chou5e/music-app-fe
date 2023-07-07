@@ -55,6 +55,7 @@ const DashboardNewSong = () => {
       albumFilter,
       languageFilter,
       filterTerm,
+      alertType,
     },
     dispatch,
   ] = useStateValue();
@@ -89,6 +90,16 @@ const DashboardNewSong = () => {
     }
     const deleteRef = ref(storage, url);
     deleteObject(deleteRef).then(() => {
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "danger",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
       setSongImageCover(null);
       setIsImageLoading(false);
       setAlbumImageCover(null);
@@ -98,10 +109,30 @@ const DashboardNewSong = () => {
       setIsAlbumUploading(false);
       setIsArtistUploading(false);
     });
+    dispatch({
+      type: actionType.SET_ALERT_TYPE,
+      alertType: "success",
+    });
+    setInterval(() => {
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: null,
+      });
+    }, 4000);
   };
 
   const saveSong = () => {
     if (!songImageCover || !audioImageCover) {
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "danger",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
     } else {
       setIsAudioLoading(true);
       setIsImageLoading(true);
@@ -123,6 +154,18 @@ const DashboardNewSong = () => {
           });
         });
       });
+
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "success",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
+
       setSongName(null);
       setIsAudioLoading(false);
       setIsImageLoading(false);
@@ -137,6 +180,16 @@ const DashboardNewSong = () => {
 
   const saveArtist = () => {
     if (!artistImageCover || !artistName || !twitter || !instagram) {
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "danger",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
     } else {
       setIsArtistUploading(true);
       const data = {
@@ -154,6 +207,17 @@ const DashboardNewSong = () => {
         });
       });
 
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "success",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
+
       setIsArtistUploading(false);
       setArtistImageCover(null);
       setArtistName("");
@@ -164,6 +228,16 @@ const DashboardNewSong = () => {
 
   const saveAlbum = () => {
     if (!albumImageCover || !albumName) {
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "danger",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
     } else {
       setIsAlbumUploading(true);
       const data = {
@@ -179,6 +253,17 @@ const DashboardNewSong = () => {
           });
         });
       });
+
+      dispatch({
+        type: actionType.SET_ALERT_TYPE,
+        alertType: "success",
+      });
+      setInterval(() => {
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: null,
+        });
+      }, 4000);
 
       setIsAlbumUploading(false);
       setAlbumImageCover(null);
@@ -417,8 +502,6 @@ const DashboardNewSong = () => {
           </motion.button>
         )}
       </div>
-
-      
     </div>
   );
 };

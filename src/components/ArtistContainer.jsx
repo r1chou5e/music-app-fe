@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardSongCard from "./DashboardSongCard";
 
-const SongContainer = ({ data }) => {
+const ArtistContainer = ({ data }) => {
   return (
     <div className="w-full flex flex-wrap gap-3 items-center justify-evenly">
       {data &&
@@ -10,11 +10,11 @@ const SongContainer = ({ data }) => {
             key={song._id}
             data={song}
             index={index}
-            type="song"
+            type="artist"
           />
         ))}
     </div>
   );
 };
 
-export default SongContainer;
+export default ArtistContainer;

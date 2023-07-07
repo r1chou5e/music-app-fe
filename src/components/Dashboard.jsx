@@ -10,8 +10,10 @@ import DashboardAlbums from "./DashboardAlbums";
 import DashboardArtists from "./DashboardArtists";
 import DashboardNewSong from "./DashboardNewSong";
 import Alert from "./Alert";
+import { useStateValue } from "../context/StateProvider";
 
 const Dashboard = () => {
+  const [{ alertType }, dispatch] = useStateValue();
   return (
     <div className="w-full h-auto flex flex-col justify-center items-center bg-primary">
       <Header />
@@ -69,7 +71,7 @@ const Dashboard = () => {
         </Routes>
       </div>
 
-      <Alert type={"danger"}  />
+      {alertType && <Alert type={alertType} />}
     </div>
   );
 };

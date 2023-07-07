@@ -95,3 +95,12 @@ export const saveNewAlbum = async (data) => {
     return null;
   }
 };
+
+export const deleteSong = async (songId) => {
+  try {
+    const res = axios.post(`${baseUrl}api/song/delete/${songId}`);
+    return res;
+  } catch (error) {
+    return null;
+  }
+};

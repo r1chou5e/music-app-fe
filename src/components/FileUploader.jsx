@@ -8,8 +8,12 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { BiCloudUpload } from "react-icons/bi";
+import { actionType } from "../context/reducer";
+import { useStateValue } from "../context/StateProvider";
 
 const FileUploader = ({ updateState, setProgress, isLoading, isImage }) => {
+  const [{ alertType }, dispatch] = useStateValue();
+
   const uploadFile = (e) => {
     isLoading(true);
     const uploadedFile = e.target.files[0];
@@ -25,12 +29,33 @@ const FileUploader = ({ updateState, setProgress, isLoading, isImage }) => {
       },
       (error) => {
         console.log(error);
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: "danger",
+        });
+        setInterval(() => {
+          dispatch({
+            type: actionType.SET_ALERT_TYPE,
+            alertType: null,
+          });
+        }, 4000);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           updateState(downloadURL);
           isLoading(false);
         });
+
+        dispatch({
+          type: actionType.SET_ALERT_TYPE,
+          alertType: "success",
+        });
+        setInterval(() => {
+          dispatch({
+            type: actionType.SET_ALERT_TYPE,
+            alertType: null,
+          });
+        }, 5000);
       }
     );
   };
