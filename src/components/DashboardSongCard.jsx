@@ -16,8 +16,10 @@ import { ref, deleteObject } from "firebase/storage";
 
 const DashboardSongCard = ({ data, index, type }) => {
   const [isDelete, setIsDelete] = useState(false);
-  const [{ alertType, allArtists, allAlbums, allSongs }, dispatch] =
-    useStateValue();
+  const [
+    { alertType, allArtists, allAlbums, allSongs, songIndex, isSongPlaying },
+    dispatch,
+  ] = useStateValue();
 
   const deleteItem = (data) => {
     if (type === "song") {
@@ -132,8 +134,27 @@ const DashboardSongCard = ({ data, index, type }) => {
     }
   };
 
+  const addToContext = () => {
+    if (!isSongPlaying) {
+      dispatch({
+        type: actionType.SET_IS_SONG_PLAYING,
+        isSongPlaying: true,
+      });
+    }
+
+    if (songIndex !== index) {
+      dispatch({
+        type: actionType.SET_SONG_INDEX,
+        songIndex: index,
+      });
+    }
+  };
+
   return (
-    <motion.div className="relative w-40 min-w-210 px-2 py-4 cursor-pointer hover:bg-card bg-gray-100 shadow-md rounded-lg flex flex-col items-center">
+    <motion.div
+      className="relative w-40 min-w-210 px-2 py-4 cursor-pointer hover:bg-card bg-gray-100 shadow-md rounded-lg flex flex-col items-center"
+      onClick={type === "song" && addToContext}
+    >
       <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden">
         <motion.img
           whileHover={{ scale: 1.05 }}
