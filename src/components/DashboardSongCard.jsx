@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { IoTrash } from "react-icons/io5";
-import { deleteSong, getAllSongs } from "../api";
+import {
+  deleteAlbum,
+  deleteArtist,
+  deleteSong,
+  getAllAlbums,
+  getAllArtists,
+  getAllSongs,
+} from "../api";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+import { storage } from "../config/firebase.config";
+import { ref, deleteObject } from "firebase/storage";
 
 const DashboardSongCard = ({ data, index, type }) => {
   const [isDelete, setIsDelete] = useState(false);
   const [{ alertType, allArtists, allAlbums, allSongs }, dispatch] =
     useStateValue();
 
-  const deleteObject = (data) => {
+  const deleteItem = (data) => {
     if (type === "song") {
+      const deleteRef = ref(storage, data.imageUrl);
+      deleteObject(deleteRef).then(() => {});
+
       deleteSong(data._id).then((res) => {
         if (res.data) {
           dispatch({
@@ -28,6 +40,80 @@ const DashboardSongCard = ({ data, index, type }) => {
             dispatch({
               type: actionType.SET_ALL_SONGS,
               allSongs: data.songs,
+            });
+          });
+        } else {
+          dispatch({
+            type: actionType.SET_ALERT_TYPE,
+            alertType: "danger",
+          });
+          setInterval(() => {
+            dispatch({
+              type: actionType.SET_ALERT_TYPE,
+              alertType: "null",
+            });
+          }, 3000);
+        }
+      });
+    }
+
+    if (type === "album") {
+      const deleteRef = ref(storage, data.imageUrl);
+      deleteObject(deleteRef).then(() => {});
+
+      deleteAlbum(data._id).then((res) => {
+        if (res.data) {
+          dispatch({
+            type: actionType.SET_ALERT_TYPE,
+            alertType: "success",
+          });
+          setInterval(() => {
+            dispatch({
+              type: actionType.SET_ALERT_TYPE,
+              alertType: "null",
+            });
+          }, 3000);
+          getAllAlbums().then((data) => {
+            dispatch({
+              type: actionType.SET_ALL_ALBUMS,
+              allAlbums: data.albums,
+            });
+          });
+        } else {
+          dispatch({
+            type: actionType.SET_ALERT_TYPE,
+            alertType: "danger",
+          });
+          setInterval(() => {
+            dispatch({
+              type: actionType.SET_ALERT_TYPE,
+              alertType: "null",
+            });
+          }, 3000);
+        }
+      });
+    }
+
+    if (type === "artist") {
+      const deleteRef = ref(storage, data.imageUrl);
+      deleteObject(deleteRef).then(() => {});
+
+      deleteArtist(data._id).then((res) => {
+        if (res.data) {
+          dispatch({
+            type: actionType.SET_ALERT_TYPE,
+            alertType: "success",
+          });
+          setInterval(() => {
+            dispatch({
+              type: actionType.SET_ALERT_TYPE,
+              alertType: "null",
+            });
+          }, 3000);
+          getAllArtists().then((data) => {
+            dispatch({
+              type: actionType.SET_ALL_ARTISTS,
+              allArtists: data.artists,
             });
           });
         } else {
@@ -90,7 +176,7 @@ const DashboardSongCard = ({ data, index, type }) => {
             <motion.button
               className="px-2 py-1 text-sm uppercase rounded-md bg-red-300 hover:bg-red-500 cursor-pointer"
               whileTap={{ scale: 0.7 }}
-              onClick={() => deleteObject(data)}
+              onClick={() => deleteItem(data)}
             >
               Yes
             </motion.button>
