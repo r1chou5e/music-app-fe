@@ -117,9 +117,8 @@ const MusicPlayer = () => {
           </motion.i>
         </div>
 
-        <div className="flex-1 flex justify-end items-end">
+        <div className="flex-1 justify-end items-end flex-col">
           {analyzerData && <WaveForm analyzerData={analyzerData} />}
-
           <AudioPlayer
             src={allSongs[songIndex]?.songUrl}
             onPlay={() => {

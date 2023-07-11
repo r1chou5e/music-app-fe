@@ -17,6 +17,7 @@ code {
 .rhap_container{
   background-color: transparent !important;
   box-shadow: none !important;
+  padding: 0 15px !important;
 }
 
 .rhap_play-pause-button{
