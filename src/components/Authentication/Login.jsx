@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 
-import { app } from "../config/firebase.config";
+import { app } from "../../config/firebase.config";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
-import { useStateValue } from "../context/StateProvider";
-import { actionType } from "../context/reducer";
-import { validateUser } from "../api";
+import { useStateValue } from "../../context/StateProvider";
+import { actionType } from "../../context/reducer";
+import { validateUser } from "../../api";
 
-import { LoginBg } from "../assets/video";
+import { LoginBg } from "../../assets/video";
 
 const Login = ({ setAuth }) => {
   const firebaseAuth = getAuth(app);

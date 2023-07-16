@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useStateValue } from "../context/StateProvider";
+import { useStateValue } from "../../context/StateProvider";
 import { motion } from "framer-motion";
 import { RiPlayListFill } from "react-icons/ri";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import PlaylistCard from "./PlaylistCard";
-import { actionType } from "../context/reducer";
+import PlaylistCard from "../Playlist/PlaylistCard";
+import { actionType } from "../../context/reducer";
 import { IoClose } from "react-icons/io5";
 import WaveForm from "./WaveForm";
 
@@ -22,6 +22,7 @@ const MusicPlayer = () => {
 
     const bufferLength = analyzer.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
+
     const source = audioCtx.createMediaElementSource(
       audioElmRef.current.audio.current
     );
@@ -34,12 +35,6 @@ const MusicPlayer = () => {
 
     setAnalyzerData({ analyzer, bufferLength, dataArray });
   };
-
-  useEffect(() => {
-    if (analyzerData) {
-      console.log(analyzerData.dataArray);
-    }
-  }, [analyzerData]);
 
   const nextTrack = () => {
     if (songIndex === allSongs.length - 1) {
@@ -76,7 +71,7 @@ const MusicPlayer = () => {
   };
   return (
     <div className="w-full flex items-center gap-3">
-      <div className={`w-full gap-3 p-4 flex relative py-5`}>
+      <div className={`w-full gap-3 p-4 flex relative`}>
         <img
           src={allSongs[songIndex]?.imageUrl}
           className="w-40 h-40 object-cover rounded-md"

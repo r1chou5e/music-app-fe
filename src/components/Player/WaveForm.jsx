@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import useSize from "../hooks/useSize";
+import useSize from "../../hooks/useSize";
 
 function animateBars(analyser, canvas, canvasCtx, dataArray, bufferLength) {
   analyser.getByteFrequencyData(dataArray);
@@ -13,7 +13,7 @@ function animateBars(analyser, canvas, canvasCtx, dataArray, bufferLength) {
   let x = 0;
 
   for (var i = 0; i < bufferLength; i++) {
-    barHeight = ((dataArray[i] / 255) * HEIGHT * 1.5);
+    barHeight = (dataArray[i] / 255) * HEIGHT * 1.5;
     const blueShade = Math.floor((dataArray[i] / 255) * 5); // generate a shade of blue based on the audio input
     const blueHex = ["#ff0000", "#f87171", "#ff0000", "#f87171", "#ff0000"][
       blueShade

@@ -8,13 +8,13 @@ import {
   getAllAlbums,
   getAllArtists,
   getAllSongs,
-} from "../api";
-import { useStateValue } from "../context/StateProvider";
-import { actionType } from "../context/reducer";
-import { storage } from "../config/firebase.config";
+} from "../../api";
+import { useStateValue } from "../../context/StateProvider";
+import { actionType } from "../../context/reducer";
+import { storage } from "../../config/firebase.config";
 import { ref, deleteObject } from "firebase/storage";
 
-const DashboardSongCard = ({ data, index, type }) => {
+const DashboardItemCard = ({ data, index, type }) => {
   const [isDelete, setIsDelete] = useState(false);
   const [
     { alertType, allArtists, allAlbums, allSongs, songIndex, isSongPlaying },
@@ -215,4 +215,4 @@ const DashboardSongCard = ({ data, index, type }) => {
   );
 };
 
-export default DashboardSongCard;
+export default DashboardItemCard;

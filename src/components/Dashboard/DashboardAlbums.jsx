@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useStateValue } from "../context/StateProvider";
-import { getAllAlbums } from "../api";
-import { actionType } from "../context/reducer";
-import AlbumContainer from "./AlbumContainer";
+import { useStateValue } from "../../context/StateProvider";
+import { getAllAlbums } from "../../api";
+import { actionType } from "../../context/reducer";
+import AlbumContainer from "../Container/AlbumContainer";
 
 const DashboardAlbums = () => {
   const [{ allAlbums }, dispatch] = useStateValue();

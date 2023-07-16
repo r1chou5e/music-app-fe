@@ -51,7 +51,7 @@ const App = () => {
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
 
-        {isSongPlaying && (
+        {auth && isSongPlaying && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}

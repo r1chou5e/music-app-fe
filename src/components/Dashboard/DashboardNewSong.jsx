@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import FilterButtons from "./FilterButtons";
-import { actionType } from "../context/reducer";
+import FilterButtons from "../Button/FilterButtons";
+import { actionType } from "../../context/reducer";
 import {
   filterByLanguages,
   filterByCategories,
-} from "../utils/supportFunctions";
+} from "../../utils/supportFunctions";
 import {
   getAllAlbums,
   getAllArtists,
@@ -13,14 +13,14 @@ import {
   saveNewArtist,
   saveNewSong,
   saveSong,
-} from "../api";
-import { useStateValue } from "../context/StateProvider";
-import FileLoader from "./FileLoader";
-import FileUploader from "./FileUploader";
-import { storage } from "../config/firebase.config";
+} from "../../api";
+import { useStateValue } from "../../context/StateProvider";
+import FileLoader from "../FileHandling/FileLoader";
+import FileUploader from "../FileHandling/FileUploader";
+import { storage } from "../../config/firebase.config";
 import { ref, deleteObject } from "firebase/storage";
 import { MdDelete } from "react-icons/md";
-import DisabledButton from "./DisabledButton";
+import DisabledButton from "../Button/DisabledButton";
 import { motion } from "framer-motion";
 
 const DashboardNewSong = () => {

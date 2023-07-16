@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useStateValue } from "../context/StateProvider";
-import { getAllArtists } from "../api";
-import { actionType } from "../context/reducer";
-import ArtistContainer from "./ArtistContainer";
+import { useStateValue } from "../../context/StateProvider";
+import { getAllArtists } from "../../api";
+import { actionType } from "../../context/reducer";
+import ArtistContainer from "../Container/ArtistContainer";
 
 const DashboardArtists = () => {
   const [{ allArtists }, dispatch] = useStateValue();

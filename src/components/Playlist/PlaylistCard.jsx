@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useStateValue } from "../context/StateProvider";
-import { getAllSongs } from "../api";
-import { actionType } from "../context/reducer";
+import { useStateValue } from "../../context/StateProvider";
+import { getAllSongs } from "../../api";
+import { actionType } from "../../context/reducer";
 import { motion } from "framer-motion";
 import { IoMusicalNote } from "react-icons/io5";
 

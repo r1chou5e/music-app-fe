@@ -1,5 +1,5 @@
 import React from "react";
-import { storage } from "../config/firebase.config";
+import { storage } from "../../config/firebase.config";
 import {
   getStorage,
   ref,
@@ -8,8 +8,8 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { BiCloudUpload } from "react-icons/bi";
-import { actionType } from "../context/reducer";
-import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../../context/reducer";
+import { useStateValue } from "../../context/StateProvider";
 
 const FileUploader = ({ updateState, setProgress, isLoading, isImage }) => {
   const [{ alertType }, dispatch] = useStateValue();

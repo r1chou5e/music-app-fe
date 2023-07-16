@@ -1,16 +1,16 @@
 import React from "react";
-import Header from "./Header";
+import Header from "../Header/Header";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
-import { isActiveStyle, isNotActiveStyle } from "../utils/styles";
+import { isActiveStyle, isNotActiveStyle } from "../../utils/styles";
 import DashboardHome from "./DashboardHome";
 import DashboardUsers from "./DashboardUsers";
 import DashboardSongs from "./DashboardSongs";
 import DashboardAlbums from "./DashboardAlbums";
 import DashboardArtists from "./DashboardArtists";
 import DashboardNewSong from "./DashboardNewSong";
-import Alert from "./Alert";
-import { useStateValue } from "../context/StateProvider";
+import Alert from "../Alert/Alert";
+import { useStateValue } from "../../context/StateProvider";
 
 const Dashboard = () => {
   const [{ alertType }, dispatch] = useStateValue();

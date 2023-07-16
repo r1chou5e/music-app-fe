@@ -2,7 +2,7 @@ import React from "react";
 import { BsEmojiWink, BsEmojiDizzy } from "react-icons/bs";
 import { motion } from "framer-motion";
 
-const Alert = ({ type }) => {
+const Alert = ({ type, message }) => {
   return (
     <motion.div
       initial={{ translateX: 200, opacity: 0 }}
@@ -17,7 +17,7 @@ const Alert = ({ type }) => {
       {type === "success" && (
         <div className="flex items-center justify-center gap-4">
           <BsEmojiWink className="text-3xl text-primary" />
-          <p className="text-xl font-semibold text-primary">Data saved</p>
+          <p className="text-xl font-semibold text-primary">{message}</p>
         </div>
       )}
 
@@ -25,7 +25,7 @@ const Alert = ({ type }) => {
         <div className="flex items-center justify-center gap-4">
           <BsEmojiDizzy className="text-3xl text-primary" />
           <p className="text-xl font-semibold text-primary">
-            Something went wrong...
+            {message}
           </p>
         </div>
       )}

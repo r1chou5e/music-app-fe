@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { IoAdd, IoPause, IoPlay, IoTrash } from "react-icons/io5";
 import { AiOutlineClear } from "react-icons/ai";
-import { useStateValue } from "../context/StateProvider";
-import { getAllSongs } from "../api";
-import { actionType } from "../context/reducer";
-import SongContainer from "./SongContainer";
+import { useStateValue } from "../../context/StateProvider";
+import { getAllSongs } from "../../api";
+import { actionType } from "../../context/reducer";
+import SongContainer from "../Container/SongContainer";
 
 const DashboardSongs = () => {
   const [songFilter, setSongFilter] = useState("");
@@ -60,8 +60,7 @@ const DashboardSongs = () => {
           </p>
         </div>
 
-          <SongContainer data={allSongs}/>
-
+        <SongContainer data={allSongs} />
       </div>
     </div>
   );

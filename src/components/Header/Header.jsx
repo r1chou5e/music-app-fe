@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Logo } from "../assets/img";
+import { Logo } from "../../assets/img";
 import { NavLink, useNavigate } from "react-router-dom";
-import { isActiveStyle, isNotActiveStyle } from "../utils/styles";
+import { isActiveStyle, isNotActiveStyle } from "../../utils/styles";
 import { FaCrown } from "react-icons/fa";
-import { useStateValue } from "../context/StateProvider";
+import { useStateValue } from "../../context/StateProvider";
 import { getAuth } from "firebase/auth";
-import { app } from "../config/firebase.config";
+import { app } from "../../config/firebase.config";
 import { motion } from "framer-motion";
 
 const Header = () => {
@@ -42,12 +42,12 @@ const Header = () => {
         </li>
         <li className="mx-5 text-lg">
           <NavLink
-            to={"/musics"}
+            to={"/music"}
             className={({ isActive }) =>
               isActive ? isActiveStyle : isNotActiveStyle
             }
           >
-            Musics
+            Music
           </NavLink>
         </li>
         <li className="mx-5 text-lg">

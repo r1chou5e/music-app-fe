@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useStateValue } from "../context/StateProvider";
-import { getAllUsers } from "../api";
+import { useStateValue } from "../../context/StateProvider";
+import { getAllUsers } from "../../api";
 import { AiOutlineClear } from "react-icons/ai";
-import { actionType } from "../context/reducer";
+import { actionType } from "../../context/reducer";
 import { motion } from "framer-motion";
 import DashboardUserCard from "./DashboardUserCard";
 
