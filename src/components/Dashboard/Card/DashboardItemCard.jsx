@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { IoTrash } from "react-icons/io5";
+import { IoEye, IoPencil, IoTrash } from "react-icons/io5";
 import {
   deleteAlbum,
   deleteArtist,
@@ -8,10 +8,10 @@ import {
   getAllAlbums,
   getAllArtists,
   getAllSongs,
-} from "../../api";
-import { useStateValue } from "../../context/StateProvider";
-import { actionType } from "../../context/reducer";
-import { storage } from "../../config/firebase.config";
+} from "../../../api";
+import { useStateValue } from "../../../context/StateProvider";
+import { actionType } from "../../../context/reducer";
+import { storage } from "../../../config/firebase.config";
 import { ref, deleteObject } from "firebase/storage";
 
 const DashboardItemCard = ({ data, index, type }) => {
@@ -23,6 +23,11 @@ const DashboardItemCard = ({ data, index, type }) => {
 
   const deleteItem = (data) => {
     if (type === "song") {
+      dispatch({
+        type: actionType.SET_IS_SONG_PLAYING,
+        isSongPlaying: false,
+      });
+
       const deleteRef = ref(storage, data.imageUrl);
       deleteObject(deleteRef).then(() => {});
 
@@ -152,7 +157,7 @@ const DashboardItemCard = ({ data, index, type }) => {
 
   return (
     <motion.div
-      className="relative w-40 min-w-210 px-2 py-4 cursor-pointer hover:bg-card bg-gray-100 shadow-md rounded-lg flex flex-col items-center"
+      className="relative w-40 min-w-210 px-2 py-5 cursor-pointer hover:bg-card bg-gray-100 shadow-md rounded-lg flex flex-col items-center"
       onClick={type === "song" && addToContext}
     >
       <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden">
@@ -174,13 +179,19 @@ const DashboardItemCard = ({ data, index, type }) => {
         )}
       </p>
 
-      <div className="w-full absolute bottom-2 right-2 flex items-center justify-between px-4">
+      <div className="w-full absolute bottom-2 flex items-center justify-end px-2 gap-2">
         <motion.i
           whileTap={{ scale: 0.75 }}
-          className="text-base text-red-400 drop-shadow-md hover:text-red-600"
+          className="text-base text-gray-400 drop-shadow-md hover:text-gray-600"
           onClick={() => setIsDelete(true)}
         >
           <IoTrash />
+        </motion.i>
+        <motion.i
+          whileTap={{ scale: 0.75 }}
+          className="text-base text-gray-400 drop-shadow-md hover:text-gray-600"
+        >
+          <IoPencil />
         </motion.i>
       </div>
 

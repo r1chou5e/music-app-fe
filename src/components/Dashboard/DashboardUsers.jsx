@@ -4,7 +4,7 @@ import { getAllUsers } from "../../api";
 import { AiOutlineClear } from "react-icons/ai";
 import { actionType } from "../../context/reducer";
 import { motion } from "framer-motion";
-import DashboardUserCard from "./DashboardUserCard";
+import DashboardUserCard from "./Card/DashboardUserCard";
 
 const DashboardUsers = () => {
   const [isFocus, setIsFocus] = useState(false);
@@ -86,9 +86,9 @@ const DashboardUsers = () => {
         </div>
 
         {allUsers &&
-          allUsers?.map((user, index) => 
+          allUsers?.map((user, index) => (
             <DashboardUserCard data={user} index={index} />
-          )}
+          ))}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardItemCard from "../Dashboard/DashboardItemCard";
+import DashboardItemCard from "../Dashboard/Card/DashboardItemCard";
 
 const SongContainer = ({ data }) => {
   return (

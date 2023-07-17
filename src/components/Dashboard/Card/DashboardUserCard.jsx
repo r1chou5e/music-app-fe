@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import moment from "moment";
-import { useStateValue } from "../../context/StateProvider";
+import { useStateValue } from "../../../context/StateProvider";
 import { motion } from "framer-motion";
-import { changeUserRole, getAllUsers, removeUser } from "../../api";
-import { actionType } from "../../context/reducer"; 
+import { changeUserRole, getAllUsers, removeUser } from "../../../api";
+import { actionType } from "../../../context/reducer";
 import { MdDelete } from "react-icons/md";
 
 const DashboardUserCard = ({ data, index }) => {
@@ -38,7 +38,7 @@ const DashboardUserCard = ({ data, index }) => {
           });
         });
       }
-    })
+    });
   };
 
   return (
