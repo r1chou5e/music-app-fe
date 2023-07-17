@@ -3,7 +3,7 @@ import DashboardItemCard from "../Dashboard/DashboardItemCard";
 
 const SongContainer = ({ data }) => {
   return (
-    <div className="w-full flex flex-wrap gap-3 items-center justify-start">
+    <div className="w-full flex flex-wrap gap-8 items-center justify-start">
       {data &&
         data.map((song, index) => (
           <DashboardItemCard

@@ -30,9 +30,9 @@ const DashboardUsers = () => {
         <input
           type="text"
           placeholder="Search here"
-          className={`w-52 px-4 py-2 border ${
-            isFocus ? "border-gray-500 shadow-md" : "border-gray-300"
-          } rounded-md bg-transparent outline-none duration-150 transition-all ease-in-out text-base text-textColor font-semibold`}
+          className={`w-52 px-4 py-2 ${
+            isFocus ? "shadow-md" : ""
+          } rounded-2xl bg-white outline-none duration-150 transition-all ease-in-out text-base text-textColor font-semibold`}
           value={emailFilter}
           onChange={(e) => setEmailFilter(e.target.value)}
           onFocus={() => setIsFocus(true)}

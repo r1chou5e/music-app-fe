@@ -11,6 +11,8 @@ import DashboardArtists from "./DashboardArtists";
 import DashboardNewSong from "./DashboardNewSong";
 import Alert from "../Alert/Alert";
 import { useStateValue } from "../../context/StateProvider";
+import DashboardNewArtist from "./DashboardNewArtist";
+import DashboardNewAlbum from "./DashboardNewAlbum";
 
 const Dashboard = () => {
   const [{ alertType }, dispatch] = useStateValue();
@@ -68,6 +70,8 @@ const Dashboard = () => {
           <Route path="/artists" element={<DashboardArtists />} />
           <Route path="/albums" element={<DashboardAlbums />} />
           <Route path="/new-song" element={<DashboardNewSong />} />
+          <Route path="/new-artist" element={<DashboardNewArtist />} />
+          <Route path="/new-album" element={<DashboardNewAlbum />} />
         </Routes>
       </div>
 

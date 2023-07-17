@@ -11,6 +11,8 @@ export { default as DashboardAlbums } from "./Dashboard/DashboardAlbums";
 export { default as DashboardArtists } from "./Dashboard/DashboardArtists";
 export { default as DashboardItemCard } from "./Dashboard/DashboardItemCard";
 export { default as DashboardNewSong } from "./Dashboard/DashboardNewSong";
+export { default as DashboardNewArtist } from "./Dashboard/DashboardNewArtist";
+export { default as DashboardNewAlbum } from "./Dashboard/DashboardNewAlbum";
 export { default as FilterButtons } from "./Button/FilterButtons";
 export { default as FileLoader } from "./FileHandling/FileLoader";
 export { default as Alert } from "./Alert/Alert";

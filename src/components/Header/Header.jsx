@@ -7,13 +7,20 @@ import { useStateValue } from "../../context/StateProvider";
 import { getAuth } from "firebase/auth";
 import { app } from "../../config/firebase.config";
 import { motion } from "framer-motion";
+import { actionType } from "../../context/reducer";
 
 const Header = () => {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, isSongPlaying }, dispatch] = useStateValue();
   const [isMenu, setIsMenu] = useState(false);
   const navigate = useNavigate();
 
   const logOut = () => {
+
+    dispatch({
+      type: actionType.SET_IS_SONG_PLAYING,
+      isSongPlaying: false,
+    });
+
     const firebaseAuth = getAuth(app);
     firebaseAuth
       .signOut()
