@@ -82,7 +82,10 @@ const DashboardUsers = () => {
           </p>
           <p className="text-sm text-textColor font-semibold w-275 min-w-[160px] text-center">
             Role
-          </p>{" "}
+          </p>
+          <p className="text-sm text-textColor font-semibold w-275 min-w-[160px] text-center">
+            Action
+          </p>
         </div>
 
         {allUsers &&

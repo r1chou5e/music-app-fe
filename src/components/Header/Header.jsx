@@ -15,7 +15,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const logOut = () => {
-
     dispatch({
       type: actionType.SET_IS_SONG_PLAYING,
       isSongPlaying: false,
@@ -34,7 +33,7 @@ const Header = () => {
   return (
     <header className="flex items-center w-full p-4 md:py-2 md:px-6">
       <NavLink to={"/"}>
-        <img src={Logo} alt="Logo" className="w-16 " />
+        <img src={Logo} alt="Logo" className="w-[90px]" />
       </NavLink>
       <ul className="flex items-center justify-center ml-7">
         <li className="mx-5 text-lg">
@@ -94,7 +93,8 @@ const Header = () => {
             {user?.user?.name}
           </p>
           <p className="flex items-center gap-2 text-xs text-gray-500 font-normal">
-            Premium Member.{" "}
+            {user?.user?.role.charAt(0).toUpperCase() +
+              user?.user?.role.slice(1)}
             <FaCrown className="text-sm -ml-1 text-yellow-500" />
           </p>
         </div>
